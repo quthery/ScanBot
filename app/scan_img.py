@@ -1,16 +1,13 @@
-from PIL import Image
-import pytesseract
+import aiopytesseract
+from pathlib import Path
 
 
-def scan(path:str, languages:str, write_txt:bool):
-    img = Image.open(path)
+async def scan_image(path:str):
 
-    text = pytesseract.image_to_string(img, lang=languages)
+    return await aiopytesseract.image_to_string(
+        path,
+        dpi=300,
+        lang='rus+eng'
+    )
 
-    if bool:
-        with open("txt.txt", 'w') as txt:
-            txt.write(text)
-    else:
-        pass
 
-scan('d.jpg', "eng+rus", 1)
