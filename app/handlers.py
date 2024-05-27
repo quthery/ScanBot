@@ -1,9 +1,10 @@
 from aiogram import Router, F
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart
 from random import randint as rn
 from app.generate import answer_physics
 from app.scan_img import scan_image
+from app.get_new_file import last_modified_file
 import app.keyboards as kb
 import os
 
@@ -21,15 +22,18 @@ async def start(message: Message):
 
 @router.message(F.photo)
 async def get_photo(message: Message) -> None:
+    await message.answer("По какому предмету тебе нужно решить задачу?", reply_markup=kb.answer)
     filename = f'images/{rn(1, 949888)}.jpg'
     await message.photo[-1].bot.download(file=message.photo[-1].file_id, destination=filename)
+
+@router.callback_query(F.data == "Physics")
+async def photo(callback: CallbackQuery):
+    filename = last_modified_file(os.path.abspath('images'))
     text = await scan_image(filename)
-    print(text)
     response = await answer_physics(text) 
-    print(response)
-    await message.bot.send_message(message.from_user.id, text=response)
-    os.remove(f"/ScanBot/{filename}")
-    
+    await callback.message.edit_text(response)
+    os.remove(filename)
+
 
 
 

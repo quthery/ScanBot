@@ -19,6 +19,7 @@ multidict==6.0.5
 nest-asyncio==1.6.0
 nodriver==0.29rc2
 packaging==24.0
+pillow==10.3.0
 pycryptodome==3.20.0
 pydantic==2.7.1
 pydantic_core==2.18.2
