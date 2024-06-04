@@ -23,7 +23,7 @@ async def answer_physics(text):
              The solution is so short and clear
              Structure, write the example I've provided.
 translate my request into English, and in the answer be sure to write everything in Russian!
-Замени cdot на привычные нам знак умножения и без каких либо лишних скобок
+Замени cdot на привычные нам знак умножения и без каких либо лишних скобок)
 
 ''' + example)
 
