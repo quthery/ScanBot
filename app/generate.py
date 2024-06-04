@@ -33,3 +33,4 @@ translate my request into English, and in the answer be sure to write everything
         model=g4f.models.gpt_4o,
         messages=[{"role": "user", "content": text.strip() + text1}],
     )
+    
