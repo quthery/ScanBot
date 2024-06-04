@@ -6,7 +6,7 @@ async def answer_physics(text):
     example = '''Дано:
     m = 125 кг, h = 70 см, t = 0,3 с
 
-    В СИ:
+    В СИ:ddd
     m = 125 кг, h = 0,7 м, t = 0,3 с
 
     Формулы:
